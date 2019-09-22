@@ -1,16 +1,16 @@
 package controller;
 
-import service.ComputeDistanceService;
+import service.ComputeDistanceServiceImpl;
 
 public class ComputeDistanceController {
 
     public void getCustomers() throws Exception {
-        ComputeDistanceService service = new ComputeDistanceService();
+        ComputeDistanceServiceImpl service = new ComputeDistanceServiceImpl();
         service.getCustomers();
     }
 
     public void writeToFile() throws Exception {
-        ComputeDistanceService service = new ComputeDistanceService();
+        ComputeDistanceServiceImpl service = new ComputeDistanceServiceImpl();
         service.writeToFile();
     }
 }
