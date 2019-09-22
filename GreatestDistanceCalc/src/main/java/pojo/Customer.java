@@ -1,52 +1,77 @@
 package pojo;
 
-public class Customer {
-    private Long userId;
-    private String name;
-    private Double latitude;
-    private Double longitude;
-    private Double distanceFromOffice;
+import javafx.util.Builder;
 
-    public Customer() {}
+public class Customer {
+    private final Long userId;
+    private final String name;
+    private final Double latitude;
+    private final Double longitude;
+    private final Double distanceFromOffice;
+
+    private Customer(CustomerBuilder builder) {
+        this.userId = builder.userId;
+        this.name = builder.name;
+        this.latitude = builder.latitude;
+        this.longitude = builder.longitude;
+        this.distanceFromOffice = builder.distanceFromOffice;
+    }
 
     public Long getUserId() {
         return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Double getLatitude() {
         return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
     }
 
     public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
     public Double getDistanceFromOffice() {
         return distanceFromOffice;
     }
 
-    public void setDistanceFromOffice(Double distanceFromOffice) {
-        this.distanceFromOffice = distanceFromOffice;
+    public static final class CustomerBuilder {
+        private Long userId;
+        private String name;
+        private Double latitude;
+        private Double longitude;
+        private Double distanceFromOffice;
+
+        public CustomerBuilder userId(final Long userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public CustomerBuilder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public CustomerBuilder latitude(final Double latitude) {
+            this.latitude = latitude;
+            return this;
+        }
+
+        public CustomerBuilder longitude(final Double longitude) {
+            this.longitude = longitude;
+            return this;
+        }
+
+        public CustomerBuilder distanceFromOffice(final Double distanceFromOffice) {
+            this.distanceFromOffice = distanceFromOffice;
+            return this;
+        }
+
+        public Customer build() {
+            return new Customer(this);
+        }
     }
 
     @Override

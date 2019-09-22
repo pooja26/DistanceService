@@ -16,7 +16,7 @@ public class CustomerRepository {
     private final static String FILESEPARATOR = "/";
 
     public List<Customer> getCustomersFromJson() {
-        List<Customer> customerList = new ArrayList<Customer>();
+        List<Customer> customerList = new ArrayList<>();
         JSONParser parser = new JSONParser();
         String line;
         try {
@@ -57,11 +57,11 @@ public class CustomerRepository {
 
 
     public Customer getCustomer() {
-        Customer customer = new Customer();
-        customer.setUserId((Long) obj.get("user_id"));
-        customer.setName((String) obj.get("name"));
-        customer.setLongitude(Double.valueOf((String) obj.get("longitude")));
-        customer.setLatitude(Double.valueOf((String) obj.get("latitude")));
-        return customer;
+        return new Customer.CustomerBuilder()
+                .userId((Long) obj.get("user_id"))
+                .name((String) obj.get("name"))
+                .latitude(Double.valueOf((String) obj.get("latitude")))
+                .longitude(Double.valueOf((String) obj.get("longitude")))
+                .build();
     }
 }
